@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joni - Makes things happen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .tagline {
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+        
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 40px 0;
+        }
+        
+        .agent-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, background 0.3s;
+        }
+        
+        .agent-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .features {
+            margin: 60px 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .pricing {
+            margin: 80px 0;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            transition: transform 0.3s;
+        }
+        
+        .pricing-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.popular {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: #667eea;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .plan-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .plan-name {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .plan-price {
+            font-size: 42px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 30px;
+        }
+        
+        .plan-price span {
+            font-size: 18px;
+            color: #888;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: right;
+        }
+        
+        .plan-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .cta {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 80px 0;
+            border-radius: 20px;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 20px 60px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.1);
+        }
+        
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .trust-badge {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.6;
+        }
+        
+        h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">JONI</div>
+        <div class="tagline">Makes things happen</div>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>המוח המרכזי</h2>
+            <div class="agents-grid">
+                <div class="agent-card">Marketing</div>
+                <div class="agent-card">Development</div>
+                <div class="agent-card">Design</div>
+                <div class="agent-card">Finance</div>
+                <div class="agent-card">Personal Assistant</div>
+                <div class="agent-card">Legal</div>
+                <div class="agent-card">Data Analyst</div>
+                <div class="agent-card">BD Manager & Sales</div>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>מבצע משימות על פי פקודה</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>תקשורת מושלמת</h3>
+                    <p>מתקשר דרך אפליקציית הצ'אט שלך בזמן אמת</p>
+                </div>
+                <div class="feature-card">
+                    <h3>למידה משותפת</h3>
+                    <p>הסוכנים מלמדים אחד את השני להבנה עמוקה יותר</p>
+                </div>
+                <div class="feature-card">
+                    <h3>מהירות מדהימה</h3>
+                    <p>יכול להריץ 8 משימות במקביל, 0 זמן בזבוז</p>
+                </div>
+                <div class="feature-card">
+                    <h3>זרימת עבודה חלקה</h3>
+                    <p>תפקידי סוכנים ברורים לשיתוף פעולה מיטבי</p>
+                </div>
+                <div class="feature-card">
+                    <h3>למידה מתמשכת</h3>
+                    <p>ככל שאנחנו עובדים בשבילך, אנחנו נעשים חכמים יותר</p>
+                </div>
+                <div class="feature-card">
+                    <h3>ארנק קריפטו רב-רשת</h3>
+                    <p>Joni קונה ומשלם באופן אוטונומי</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing">
+            <h2>גדלים שונים</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="plan-icon">💎</div>
+                    <div class="plan-name">Joni</div>
+                    <div class="plan-price">$99<span>/חודש</span></div>
+                    <ul class="plan-features">
+                        <li>8 סוכני AI מיוחדים עובדים כצוות אחד</li>
+                        <li>ארנק קריפטו רב-רשת</li>
+                        <li>תיבת דואר נכנס</li>
+                        <li>יצירת וידאו, תמונות, קוד</li>
+                        <li>הרצת 8 משימות במקביל</li>
+                        <li>רכישת כל מה שצריך</li>
+                        <li>גישה לטכנולוגיה שרק 0.1% יש</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card popular">
+                    <div class="popular-badge">הכי פופולרי - 91% מתחילים כאן</div>
+                    <div class="plan-icon">🔥</div>
+                    <div class="plan-name">Joni Pro</div>
+                    <div class="plan-price">$299<span>/חודש</span></div>
+                    <ul class="plan-features">
+                        <li>כל מה שיש ב-Joni</li>
+                        <li>קיבולת גבוהה יותר</li>
+                        <li>יותר קרדיטים</li>
+                        <li>ביצוע מהיר יותר</li>
+                        <li>פרויקטים אוטונומיים מורכבים</li>
+                        <li>ROI בשבוע הראשון</li>
+                        <li>$299/חודש או $3,000/חודש לעובד זוטר?</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="plan-icon">👑</div>
+                    <div class="plan-name">Joni Max</div>
+                    <div class="plan-price">$999<span>/חודש</span></div>
+                    <ul class="plan-features">
+                        <li>כל מה שיש ב-Pro</li>
+                        <li>קרדיטים מקסימליים</li>
+                        <li>מהירויות ביצוע מקסימליות</li>
+                        <li>כוח עיבוד עדיפות</li>
+                        <li>אוטונומיה מתקדמת</li>
+                        <li>פרויקטים של שבועות, אפס ליווי</li>
+                        <li>6 חודשים קדימה מהמתחרים</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <h2>מוכנים לשנות את המשחק?</h2>
+            <p style="font-size: 20px;">הצטרף ל-10,000+ חברות שכבר משתמשות ב-Joni</p>
+            <a href="#" class="cta-button">התחל עכשיו</a>
+            <div class="trust-badges">
+                <div class="trust-badge">✓ ללא כרטיס אשראי</div>
+                <div class="trust-badge">✓ ביטול בכל עת</div>
+                <div class="trust-badge">✓ תמיכה 24/7</div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2026 Joni. All rights reserved. Joni was built by Joni</p>
+        <p>v1.0</p>
+    </footer>
+</body>
+</html>
